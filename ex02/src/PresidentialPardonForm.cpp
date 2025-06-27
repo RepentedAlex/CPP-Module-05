@@ -43,16 +43,7 @@ const std::string	PresidentialPardonForm::getTarget() const
 ///SETTERS//////////////////////////////////////////////////////////////////////
 
 ///MEMBER FUNCTIONS/////////////////////////////////////////////////////////////
-void	PresidentialPardonForm::beSigned(const Bureaucrat &bureaucrat)
+void	PresidentialPardonForm::execute(const Bureaucrat &executor)
 {
-	if (this->getIsSigned() == true)
-		std::cout << "PresidentialPardonForm " << this->getName() << " is already signed!" << std::endl;
-	else if (bureaucrat.getGrade() > this->getGradeToSign())
-		throw AForm::GradeTooLowException();
-	else
-	{
-		this->setIsSigned(true);
-		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	}
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
-

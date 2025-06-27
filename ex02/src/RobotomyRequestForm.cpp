@@ -46,21 +46,12 @@ const std::string	RobotomyRequestForm::getTarget() const
 ///SETTERS//////////////////////////////////////////////////////////////////////
 
 ///MEMBER FUNCTIONS/////////////////////////////////////////////////////////////
-void	RobotomyRequestForm::beSigned(const Bureaucrat &bureaucrat)
+void	RobotomyRequestForm::execute(const Bureaucrat &executor)
 {
-	if (this->getIsSigned() == true)
-		std::cout << "RobotomyRequestForm " << this->getName() << " is already signed!" << std::endl;
-	else if (bureaucrat.getGrade() > this->getGradeToSign())
-		throw AForm::GradeTooLowException();
+	std::cout << "* Drilling noises *" << std::endl;
+	if (_counter_rrf % 2 == 0)
+		std::cout << this->getTarget() << " has been robotomized successfully!" << std::endl;
 	else
-	{
-		this->setIsSigned(true);
-		std::cout << "* Drilling noises *" << std::endl;
-		if (_counter_rrf % 2 == 0)
-			std::cout << this->getTarget() << " has been robotomized successfully!" << std::endl;
-		else
-			std::cout << "Robotomy on " << this->getTarget() << " has failed..." << std::endl;
-		_counter_rrf++;
-	}
+		std::cout << "Robotomy on " << this->getTarget() << " has failed..." << std::endl;
+	_counter_rrf++;
 }
-

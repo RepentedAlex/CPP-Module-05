@@ -4,6 +4,7 @@
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 #define BLUE	"\033[1;95m"
 #define CYAN	"\033[36m"
@@ -33,8 +34,10 @@ int	main()
 	PRINT_SECTION("TESTING FORMS");
 	PresidentialPardonForm	ppf("Lockne");
 	RobotomyRequestForm	rrf("Malingen");
+	ShrubberyCreationForm	scf("tree");
 	Bureaucrat	ppf_gs_low("Larbino", 26);
 	Bureaucrat	rrf_gs_low("Robotino", 73);
+	Bureaucrat	scf_gs_low("Straw", 146);
 	Bureaucrat	chief("Chief", 1);
 
 	PRINT_TEST("Grade too low to sign Presidential Pardon Form: ");
@@ -77,6 +80,38 @@ int	main()
 	try
 	{
 		chief.signForm(rrf);
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cout << chief << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	PRINT_TEST("Execute Robotomy Request Form: ");
+	try
+	{
+
+	}
+
+	std::cout << std::endl;
+
+	PRINT_TEST("Grade too low to sign Shrubbery Creation Form: ");
+	try
+	{
+		scf_gs_low.signForm(scf);
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cout << scf_gs_low << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	PRINT_TEST("Can sign Shrubbery Creation Form: ");
+	try
+	{
+		chief.signForm(scf);
 	}
 	catch (AForm::GradeTooLowException &e)
 	{

@@ -61,6 +61,18 @@ void	AForm::setIsSigned(const bool state)
 }
 
 ///MEMBER FUNCTIONS/////////////////////////////////////////////////////////////
+void	AForm::beSigned(const Bureaucrat &bureaucrat)
+{
+	if (this->getIsSigned() == true)
+		std::cout << this->getName() << " is already signed!" << std::endl;
+	else if (bureaucrat.getGrade() > this->getGradeToSign())
+		throw AForm::GradeTooLowException();
+	else
+	{
+		this->setIsSigned(true);
+		std::cout << this->getName() << " has been signed by " << bureaucrat.getName() << '!' << std::endl;
+	}
+}
 
 ///EXCEPTIONS///////////////////////////////////////////////////////////////////
 const char	*AForm::GradeTooHighException::what() const throw()

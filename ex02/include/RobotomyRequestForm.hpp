@@ -2,6 +2,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 #define RRF_GS 72
 #define RRF_GE 45
@@ -21,7 +22,7 @@ class RobotomyRequestForm : public AForm
 			const std::string	getTarget() const;
 		// Setters
 		// Member functions
-			void	beSigned(const Bureaucrat &bureaucrat);
+			void	execute(Bureaucrat const &executor);
 
 	private:
 		const std::string	_target;

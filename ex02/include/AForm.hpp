@@ -27,7 +27,8 @@ class AForm
 		// Setters
 			virtual void	setIsSigned(const bool state);
 		// Member functions
-			virtual void	beSigned(const Bureaucrat &bureaucrat) = 0;
+			void	beSigned(const Bureaucrat &bureaucrat);
+			virtual void	execute(Bureaucrat const &executor) = 0;
 		// Exceptions
 			class GradeTooHighException : public std::exception
 			{

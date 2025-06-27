@@ -43,15 +43,7 @@ const std::string	ShrubberyCreationForm::getTarget() const
 ///SETTERS//////////////////////////////////////////////////////////////////////
 
 ///MEMBER FUNCTIONS/////////////////////////////////////////////////////////////
-void	ShrubberyCreationForm::beSigned(const Bureaucrat &bureaucrat)
+void	ShrubberyCreationForm::execute(const Bureaucrat &executor)
 {
-	if (this->getIsSigned() == true)
-		std::cout << "ShrubberyCreationForm " << this->getName() << " is already signed!" << std::endl;
-	else if (bureaucrat.getGrade() > this->getGradeToSign())
-		throw AForm::GradeTooLowException();
-	else
-	{
-		this->setIsSigned(true);
-	}
-}
 
+}

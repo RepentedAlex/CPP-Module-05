@@ -21,7 +21,7 @@ class PresidentialPardonForm : public AForm
 			const std::string	getTarget() const;
 		// Setters
 		// Member functions
-			void	beSigned(const Bureaucrat &bureaucrat);
+			void	execute(Bureaucrat const &executor);
 
 	private:
 		const std::string	_target;
