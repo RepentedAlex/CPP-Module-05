@@ -38,3 +38,4 @@ ex03/Bureaucrat
 # Temporary files
 .cache_exists
 .clangd
+tags

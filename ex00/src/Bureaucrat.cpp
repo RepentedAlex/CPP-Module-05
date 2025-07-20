@@ -1,6 +1,6 @@
-#include <iostream>
-
 #include "Bureaucrat.hpp"
+
+#include <iostream>
 
 ///CONSTRUCTORS/////////////////////////////////////////////////////////////////
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name), _grade(grade)
