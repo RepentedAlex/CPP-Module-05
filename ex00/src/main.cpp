@@ -50,23 +50,19 @@ int	main()
 
 		PRINT_SUBSECTION("Constructing with invalid grades");
 		PRINT_TEST("Grade == 0 (Too high)");
-		try
-		{
+		try {
 			Bureaucrat	timeo("Timéo", 0);
 		}
-		catch (Bureaucrat::GradeTooHighException &e)
-		{
+		catch (const Bureaucrat::GradeTooHighException &e) {
 			std::cout << "Couldn't create Timéo: " << e.what() << std::endl;
 		}
 
 		PRINT_TEST("Grade == 151 (Too low)");
-		try
-		{
+		try {
 			Bureaucrat	cunegonde("Cunégonde", 151);
 		}
-		catch (Bureaucrat::GradeTooLowException &e)
-		{
-			std::cout << "Couldn't create Timéo: " << e.what() << std::endl;
+		catch (const Bureaucrat::GradeTooLowException &e) {
+			std::cout << "Couldn't create Cunégonde: " << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -76,21 +72,17 @@ int	main()
 		Bureaucrat	celestin("Célestin", 1);
 
 		PRINT_TEST("Decrementing lowest grade: ");
-		try
-		{
+		try {
 			melissandre.decrementGrade();
 		}
-		catch (Bureaucrat::GradeTooLowException &e)
-		{
+		catch (const Bureaucrat::GradeTooLowException &e) {
 			std::cout << melissandre << e.what() << std::endl;
 		}
 		PRINT_TEST("Incrementing highest grade: ");
-		try
-		{
+		try {
 			celestin.incrementGrade();
 		}
-		catch (Bureaucrat::GradeTooHighException &e)
-		{
+		catch (const Bureaucrat::GradeTooHighException &e) {
 			std::cout << celestin << e.what() << std::endl;
 		}
 	}
