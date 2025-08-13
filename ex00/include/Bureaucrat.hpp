@@ -22,7 +22,7 @@ public:
 
 	/// @brief Copy constructor.
 	/// @param original The original Bureaucrat instance we want to copy from.
-	Bureaucrat(const Bureaucrat &original);
+	Bureaucrat(const Bureaucrat& original);
 
 	/// @brief Destructor.
 	~Bureaucrat();
@@ -44,7 +44,7 @@ public:
 	/// @brief Assignment operator overload.
 	/// @param original The original Bureaucrat instance we want to assign from.
 	/// @return A reference to a Bureaucrat instance.
-	Bureaucrat&			operator=(const Bureaucrat &original);
+	Bureaucrat&			operator=(const Bureaucrat& original);
 
 	/// @brief Setter for the grade_ attribute.
 	/// @param grade The grade to be assigned to the grade_ attribute.
@@ -75,6 +75,6 @@ private:
 /// @param o The output stream to write to.
 /// @param bureaucrat The Bureaucrat object to display.
 /// @return A reference to the modified output stream.
-std::ostream&	operator<<(std::ostream &o, Bureaucrat &bureaucrat);
+std::ostream&	operator<<(std::ostream& o, Bureaucrat& bureaucrat);
 
 #endif // !BUREAUCRAT_HPP
