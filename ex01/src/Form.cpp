@@ -20,15 +20,14 @@ Form::Form(const Form& original)
 	*this = original;
 }
 
-Form::~Form() {
-}
+Form::~Form() {}
 
 void	Form::beSigned(Bureaucrat bureaucrat) {
-	if (this->isSigned_ == true)
+	if (this->isSigned_ == true) {
 		std::cout << "Form " << this->name_ << " is already signed!" << std::endl;
-	else if (bureaucrat.getGrade() > this->gradeToSign_)
+	} else if (bureaucrat.getGrade() > this->gradeToSign_) {
 		throw Form::GradeTooLowException();
-	else {
+	} else {
 		this->isSigned_ = true;
 		std::cout << "Form " << this->name_ << " has been signed by " << bureaucrat.getName() << std::endl;
 	}
@@ -66,8 +65,10 @@ const char*	Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream&	operator<<(std::ostream& o, const Form& form) {
-	o << "Form " << form.getName() << ": Grade to sign = " << form.getGradeToSign()
-		<< " ; Grade to Exec = " << form.getGradeToExec() << " ; Is it signed ? "
-		<< form.getIsSigned() << '.' << std::endl;
+	o	<< "Form " << form.getName()
+		<< ": Grade to sign = " << form.getGradeToSign()
+		<< " ; Grade to Exec = " << form.getGradeToExec()
+		<< " ; Is it signed ? " << (form.getIsSigned() ? "Yes" : "No")
+		<< '.' << std::endl;
 	return (o);
 }

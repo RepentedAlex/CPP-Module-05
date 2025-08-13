@@ -150,7 +150,6 @@ int	main() {
 				std::cout << test << e.what() << std::endl;
 			}
 		}
-		std::cout << std::endl;
 	}
 	return (0);
 }
