@@ -79,13 +79,13 @@ int	main() {
 		try {
 			melissandre.decrementGrade();
 		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << melissandre << " Error: " << e.what() << std::endl;
+			std::cout << melissandre << "Error: " << e.what() << std::endl;
 		}
 		PRINT_TEST("Incrementing highest grade: ");
 		try {
 			celestin.incrementGrade();
 		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << celestin << " Error: " << e.what() << std::endl;
+			std::cout << celestin << "Error: " << e.what() << std::endl;
 		}
 	}
 
@@ -144,9 +144,8 @@ int	main() {
 			Bureaucrat	lowrank("Low rank bureau", 150);
 
 			PRINT_TEST("Grade too low to sign");
-			lowrank.signForm(test);
 			try {
-				test.beSigned(lowrank);
+				lowrank.signForm(test);
 			} catch (const Form::GradeTooLowException& e) {
 				std::cout << test << e.what() << std::endl;
 			}
