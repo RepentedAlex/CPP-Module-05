@@ -18,7 +18,7 @@ Bureaucrat::Bureaucrat(unsigned int grade)
 		throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& original) {
+Bureaucrat::Bureaucrat(const Bureaucrat& original) : name_(original.name_) {
 	*this = original;
 }
 
