@@ -53,15 +53,17 @@ public:
 	/// @class GradeTooLowException
 	class GradeTooLowException : public std::exception {
 	public:
-		/// @brief
-		const char	*what() const throw();
+		/// @brief Returns a descriptive message of the exception as a C-Style string.
+		/// @return A opinter to a null-terminated string describing the exception.
+		const char*	what() const throw();
 	};
 
 	/// @class GradeTooHighException
 	class GradeTooHighException : public std::exception {
 	public:
-		/// @brief
-		const char	*what() const throw();
+		/// @brief Returns a descriptive message of the exception as a C-Style string.
+		/// @return A opinter to a null-terminated string describing the exception.
+		const char*	what() const throw();
 	};
 
 private:
@@ -73,6 +75,6 @@ private:
 /// @param o The output stream to write to.
 /// @param bureaucrat The Bureaucrat object to display.
 /// @return A reference to the modified output stream.
-std::ostream	&operator<<(std::ostream &o, Bureaucrat &bureaucrat);
+std::ostream&	operator<<(std::ostream &o, Bureaucrat &bureaucrat);
 
 #endif // !BUREAUCRAT_HPP
