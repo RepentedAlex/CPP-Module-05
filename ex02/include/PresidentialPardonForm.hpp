@@ -1,3 +1,5 @@
+/// @file PresidentialPardonForm.hpp
+
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
@@ -6,25 +8,38 @@
 #define PPF_GS 25
 #define PPF_GE 5
 
-class PresidentialPardonForm : public AForm
-{
-	public:
-		// Constructors
-			PresidentialPardonForm();
-			PresidentialPardonForm(std::string target);
-			PresidentialPardonForm(const PresidentialPardonForm &original);
-		// Destructors
-			~PresidentialPardonForm();
-		// Operator overloads
-			PresidentialPardonForm &operator=(const PresidentialPardonForm &original);
-		// Getters
-			const std::string	getTarget() const;
-		// Setters
-		// Member functions
-			void	execute(Bureaucrat const &executor);
+/// @class PresidentialPardonForm
+class	PresidentialPardonForm : public AForm {
+public:
+	/// @ brief
+	PresidentialPardonForm();
 
-	private:
-		const std::string	_target;
+	/// @brief
+	/// @param target
+	PresidentialPardonForm(std::string target);
+
+	/// @brief
+	/// @param original
+	PresidentialPardonForm(const PresidentialPardonForm& original);
+
+	/// @brief Destructor.
+	~PresidentialPardonForm();
+
+	/// @brief
+	/// @param executor
+	void					execute(Bureaucrat const& executor);
+
+	/// @brief
+	/// @return
+	const std::string&		getTarget() const;
+
+	/// @brief
+	/// @param original
+	/// @return
+	PresidentialPardonForm&	operator=(const PresidentialPardonForm& original);
+
+private:
+	const std::string	target_;	///<
 };
 
 #endif // !PRESIDENTIALPARDONFORM_HPP

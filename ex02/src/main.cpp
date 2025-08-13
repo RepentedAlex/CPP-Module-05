@@ -41,82 +41,63 @@ int	main()
 	Bureaucrat	chief("Chief", 1);
 
 	PRINT_TEST("Grade too low to sign Presidential Pardon Form: ");
-	try
-	{
+	try {
 		ppf_gs_low.signForm(ppf);
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << ppf_gs_low << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
 	PRINT_TEST("Can sign Presidential Pardon Form: ");
-	try
-	{
+	try {
 		chief.signForm(ppf);
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << chief << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
 	PRINT_TEST("Grade too low to sign Robotomy Request Form: ");
-	try
-	{
+	try {
 		rrf_gs_low.signForm(rrf);
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << rrf_gs_low << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
 	PRINT_TEST("Can sign Robotomy Request Form: ");
-	try
-	{
+	try {
 		chief.signForm(rrf);
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << chief << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
 	PRINT_TEST("Execute Robotomy Request Form: ");
-	try
-	{
+	try {
 
+	} catch (const AForm::GradeTooLowException& e) {
 	}
 
 	std::cout << std::endl;
 
 	PRINT_TEST("Grade too low to sign Shrubbery Creation Form: ");
-	try
-	{
+	try {
 		scf_gs_low.signForm(scf);
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << scf_gs_low << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
 
 	PRINT_TEST("Can sign Shrubbery Creation Form: ");
-	try
-	{
+	try {
 		chief.signForm(scf);
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	} catch (const AForm::GradeTooLowException& e) {
 		std::cout << chief << e.what() << std::endl;
 	}
-
 	return (0);
 }

@@ -1,49 +1,34 @@
 #include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
 
-#include <iostream>
-
-///CONSTRUCTORS/////////////////////////////////////////////////////////////////
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Unnamed SCF", SCF_GS, SCF_GE), _target("Unnamed target")
-{
-
+ShrubberyCreationForm::ShrubberyCreationForm()
+		: AForm("Unnamed SCF", SCF_GS, SCF_GE),
+		  target_("Unnamed target") {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("SCF", SCF_GS, SCF_GE), _target(target)
-{
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+		: AForm("SCF", SCF_GS, SCF_GE),
+		  target_(target) {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original)
-{
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) {
 	*this = original;
 }
 
-///DESTRUCTORS//////////////////////////////////////////////////////////////////
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
+ShrubberyCreationForm::~ShrubberyCreationForm() {
 
 }
 
-///OPERATOR OVERLOADS///////////////////////////////////////////////////////////
-ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &original)
-{
-	if (this != &original)
-	{
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &original) {
+	if (this != &original) {
 		return (*this);
 	}
 	return (*this);
 }
 
-///GETTERS//////////////////////////////////////////////////////////////////////
-const std::string	ShrubberyCreationForm::getTarget() const
-{
-	return (this->_target);
+const std::string&	ShrubberyCreationForm::getTarget() const {
+	return (this->target_);
 }
 
-///SETTERS//////////////////////////////////////////////////////////////////////
-
-///MEMBER FUNCTIONS/////////////////////////////////////////////////////////////
-void	ShrubberyCreationForm::execute(const Bureaucrat &executor)
-{
+void	ShrubberyCreationForm::execute(const Bureaucrat &executor) {
 
 }
