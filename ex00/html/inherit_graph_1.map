@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,42,120,67"/>
-<area shape="rect" id="Node000001" href="$classBureaucrat_1_1GradeTooHighException.html" title=" " alt="" coords="198,5,390,45"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="134,43,197,35,198,40,134,48"/>
-<area shape="rect" id="Node000002" href="$classBureaucrat_1_1GradeTooLowException.html" title=" " alt="" coords="168,70,420,95"/>
-<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="134,61,189,67,189,73,134,66"/>
-</map>
