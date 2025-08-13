@@ -1,75 +1,86 @@
-#include "Bureaucrat.hpp"
-
 #include <iostream>
 
-Bureaucrat::Bureaucrat(std::string const& name, unsigned int grade)
-		: name_(name), grade_(grade) {
-	if (grade < 1)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
-}
+#include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(unsigned int grade)
-		: name_("Scapegoat"), grade_(grade) {
-	if (grade < 1)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
-}
+#define BLUE	"\033[1;95m"
+#define CYAN	"\033[36m"
+#define YELLOW	"\033[4;33m"
+#define RESET	"\033[0m"
 
-Bureaucrat::Bureaucrat(const Bureaucrat &original) {
-	*this = original;
-}
+#define PRINT_SECTION(x) \
+do { \
+	std::cout << BLUE "=== " x " ===" RESET << std::endl; \
+} while (0)
 
-Bureaucrat::~Bureaucrat() {
 
-}
+#define PRINT_SUBSECTION(x) \
+do { \
+	std::cout << YELLOW "~ " x " ~" RESET << std::endl; \
+} while (0)
 
-void	Bureaucrat::decrementGrade() {
-	if (this->grade_ >= 150)
-		throw GradeTooLowException();
-	this->grade_++;
-}
+#define PRINT_TEST(x) \
+do { \
+	std::cout << CYAN x RESET << std::endl; \
+} while (0)
 
-unsigned int	Bureaucrat::getGrade() const {
-	return (this->grade_);
-}
+#define PRINT(x) do { std::cout << x << std::endl; } while (0)
 
-const std::string&	Bureaucrat::getName() const {
-	return (this->name_);
-}
+int	main()
+{
+	{
+		PRINT_SECTION("TESTING VALID");
+		Bureaucrat	regis("Régis", 42);
 
-void	Bureaucrat::incrementGrade() {
-	if (this->grade_ <= 1)
-		throw GradeTooHighException();
-	this->grade_--;
-}
+		std::cout << regis;
 
-Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &original) {
-	if (this != &original)
-		this->grade_ = original.grade_;
-	return (*this);
-}
+		PRINT_SUBSECTION("Incrementing grade");
+		regis.incrementGrade();
+		std::cout << regis;
 
-void	Bureaucrat::setGrade(const int grade) {
-	if (grade < 1)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
-	else
-		this->grade_ = grade;
-}
+		PRINT_SUBSECTION("Decrementing grade");
+		regis.decrementGrade();
+		std::cout << regis;
 
-const char	*Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Error: Grade too low.");
-}
+	}
 
-const char	*Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Error: Grade too high.");
-}
+	std::cout << std::endl;
 
-std::ostream	&operator<<(std::ostream &o, Bureaucrat &bureaucrat) {
-	o << bureaucrat.getName() << "'s grade: " << bureaucrat.getGrade() << '.' << std::endl;
-	return (o);
+	{
+		PRINT_SECTION("TESTING EXCEPTIONS");
+
+		PRINT_SUBSECTION("Constructing with invalid grades");
+		PRINT_TEST("Grade == 0 (Too high)");
+		try {
+			Bureaucrat	timeo("Timéo", 0);
+		} catch (const Bureaucrat::GradeTooHighException& e) {
+			std::cout << "Couldn't create Timéo: " << e.what() << std::endl;
+		}
+
+		PRINT_TEST("Grade == 151 (Too low)");
+		try {
+			Bureaucrat	cunegonde("Cunégonde", 151);
+		} catch (const Bureaucrat::GradeTooLowException& e) {
+			std::cout << "Couldn't create Cunégonde: " << e.what() << std::endl;
+		}
+
+		std::cout << std::endl;
+
+		PRINT_SUBSECTION("Incrementing/Decrementing outside of acceptable range");
+		Bureaucrat	melissandre("Mélissandre", 150);
+		Bureaucrat	celestin("Célestin", 1);
+
+		PRINT_TEST("Decrementing lowest grade: ");
+		try {
+			melissandre.decrementGrade();
+		} catch (const Bureaucrat::GradeTooLowException& e) {
+			std::cout << melissandre << e.what() << std::endl;
+		}
+		PRINT_TEST("Incrementing highest grade: ");
+		try {
+			celestin.incrementGrade();
+		} catch (const Bureaucrat::GradeTooHighException& e) {
+			std::cout << celestin << e.what() << std::endl;
+		}
+	}
+	return (0);
 }
