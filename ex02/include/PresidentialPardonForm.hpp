@@ -11,7 +11,7 @@
 /// @class PresidentialPardonForm
 class	PresidentialPardonForm : public AForm {
 public:
-	/// @ brief
+	/// @brief
 	PresidentialPardonForm();
 
 	/// @brief
