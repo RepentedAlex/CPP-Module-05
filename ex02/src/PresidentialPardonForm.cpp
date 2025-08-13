@@ -3,16 +3,17 @@
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm()
-		: AForm("Unnamed PPF", PPF_GS, PPF_GE),
+		: AForm("Unnamed Presidential Pardon Form", PPF_GS, PPF_GE),
 		  target_("Unnamed target") {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
-		: AForm("PPF", PPF_GS, PPF_GE),
+		: AForm("Presidential Pardon Form", PPF_GS, PPF_GE),
 		  target_(target) {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original) {
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original)
+		: AForm(original.getName(), original.getGradeToSign(), original.getGradeToExec()) {
 	*this = original;
 }
 
@@ -20,7 +21,11 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) {
-	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	if (executor.getGrade() > this->getGradeToExec()) {
+		throw AForm::GradeTooLowException();
+	} else {
+		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	}
 }
 
 const std::string&	PresidentialPardonForm::getTarget() const {

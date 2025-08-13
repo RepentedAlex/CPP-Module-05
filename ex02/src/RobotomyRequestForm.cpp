@@ -5,16 +5,17 @@
 int	RobotomyRequestForm::counter_rrf_ = 0;
 
 RobotomyRequestForm::RobotomyRequestForm()
-		: AForm("Unnamed RRF", RRF_GS, RRF_GE),
+		: AForm("Unnamed Robotomy Request Form", RRF_GS, RRF_GE),
 		  target_("Unnamed target") {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-		: AForm("PPF", RRF_GS, RRF_GE),
+		: AForm("Robotomy Request Form", RRF_GS, RRF_GE),
 		  target_(target) {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &original) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &original)
+		: AForm(original.getName(), original.getGradeToSign(), original.getGradeToExec()) {
 	*this = original;
 }
 
@@ -22,13 +23,17 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) {
-	std::cout << "* Drilling noises *" << std::endl;
-	if (counter_rrf_ % 2 == 0) {
-		std::cout << this->target_ << " has been robotomized successfully!" << std::endl;
+	if (executor.getGrade() > this->getGradeToExec()) {
+		throw AForm::GradeTooLowException();
 	} else {
-		std::cout << "Robotomy on " << this->target_ << " has failed..." << std::endl;
+		std::cout << "* Drilling noises *" << std::endl;
+		if (counter_rrf_ % 2 == 0) {
+			std::cout << this->target_ << " has been robotomized successfully!" << std::endl;
+		} else {
+			std::cout << "Robotomy on " << this->target_ << " has failed..." << std::endl;
+		}
+		counter_rrf_++;
 	}
-	counter_rrf_++;
 }
 
 const std::string&	RobotomyRequestForm::getTarget() const {

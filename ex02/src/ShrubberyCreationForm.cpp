@@ -1,34 +1,37 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-		: AForm("Unnamed SCF", SCF_GS, SCF_GE),
+		: AForm("Unnamed Shrubbery Creation Form", SCF_GS, SCF_GE),
 		  target_("Unnamed target") {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-		: AForm("SCF", SCF_GS, SCF_GE),
+		: AForm("Shrubbery Creation Form", SCF_GS, SCF_GE),
 		  target_(target) {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& original)
+		: AForm(original.getName(), original.getGradeToSign(), original.getGradeToExec()) {
 	*this = original;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-
 }
 
-ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &original) {
-	if (this != &original) {
-		return (*this);
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) {
+	if (executor.getGrade() > this->getGradeToExec()) {
+		throw AForm::GradeTooLowException();
+	} else {
 	}
-	return (*this);
 }
 
 const std::string&	ShrubberyCreationForm::getTarget() const {
 	return (this->target_);
 }
 
-void	ShrubberyCreationForm::execute(const Bureaucrat &executor) {
-
+ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& original) {
+	if (this != &original) {
+		return (*this);
+	}
+	return (*this);
 }
