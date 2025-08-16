@@ -1,5 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
+#include <fstream>
+#include <iostream>
+
 ShrubberyCreationForm::ShrubberyCreationForm()
 		: AForm("Unnamed Shrubbery Creation Form", SCF_GS, SCF_GE),
 		  target_("Unnamed target") {
@@ -18,12 +21,52 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& origin
 ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 
-/// @todo Implement effect of Form
+void	drawTree(std::fstream& file) {
+file	<< "	                                                         ." << std::endl
+		<< "                                              .         ;" << std::endl
+		<< "                 .              .              ;%     ;;" << std::endl
+		<< "                   ,           ,                :;%  %;" << std::endl
+		<< "                    :         ;                   :;%;'     .," << std::endl
+		<< "           ,.        %;     %;            ;        %;'    ,;" << std::endl
+		<< "             ;       ;%;  %%;        ,     %;    ;%;    ,%'" << std::endl
+		<< "              %;       %;%;      ,  ;       %;  ;%;   ,%;'" << std::endl
+		<< "               ;%;      %;        ;%;        % ;%;  ,%;'" << std::endl
+		<< "                `%;.     ;%;     %;'         `;%%;.%;'" << std::endl
+		<< "                 `:;%.    ;%%. %@;        %; ;@%;%'" << std::endl
+		<< "                    `:%;.  :;bd%;          %;@%;'" << std::endl
+		<< "                      `@%:.  :;%.         ;@@%;'" << std::endl
+		<< "                        `@%.  `;@%.      ;@@%;" << std::endl
+		<< "                          `@%%. `@%%    ;@@%;" << std::endl
+		<< "                            ;@%. :@%%  %@@%;" << std::endl
+		<< "                              %@bd%%%bd%%:;" << std::endl
+		<< "                                #@%%%%%:;;" << std::endl
+		<< "                                %@@%%%::;" << std::endl
+		<< "                                %@@@%(o);  . '" << std::endl
+		<< "                                %@@@o%;:(.,'" << std::endl
+		<< "                            `.. %@@@o%::;" << std::endl
+		<< "                               `)@@@o%::;" << std::endl
+		<< "                                %@@(o)::;" << std::endl
+		<< "                               .%@@@@%::;" << std::endl
+		<< "                               ;%@@@@%::;." << std::endl
+		<< "                              ;%@@@@%%:;;;." << std::endl
+		<< "                          ...;%@@@@@%%:;;;;,.." << std::endl
+		<< std::endl;
+}
+
 void	ShrubberyCreationForm::execute(const Bureaucrat& executor) {
+	std::fstream	file;
 	if (executor.getGrade() > this->getGradeToExec()) {
 		throw AForm::GradeTooLowException();
 	} else {
+		file.open((this->target_ + "_shrubbery").c_str(), std::fstream::out);
+		if (!file) {
+			/// @todo Should this be an exception ?
+			std::cerr << "Couldn't open file." << std::endl;
+		} else {
+			drawTree(file);
+		}
 	}
+	file.close();
 }
 
 const std::string&	ShrubberyCreationForm::getTarget() const {
