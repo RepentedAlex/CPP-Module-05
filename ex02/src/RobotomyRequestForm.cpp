@@ -23,7 +23,9 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) {
-	if (executor.getGrade() > this->getGradeToExec()) {
+	if (this->getIsSigned() == false) {
+		throw AForm::FormNotSignedException();
+	} if (executor.getGrade() > this->getGradeToExec()) {
 		throw AForm::GradeTooLowException();
 	} else {
 		std::cout << "* Drilling noises *" << std::endl;

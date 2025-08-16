@@ -55,7 +55,9 @@ file	<< "	                                                         ." << std::en
 
 void	ShrubberyCreationForm::execute(const Bureaucrat& executor) {
 	std::fstream	file;
-	if (executor.getGrade() > this->getGradeToExec()) {
+	if (this->getIsSigned() == false) {
+		throw AForm::FormNotSignedException();
+	} if (executor.getGrade() > this->getGradeToExec()) {
 		throw AForm::GradeTooLowException();
 	} else {
 		file.open((this->target_ + "_shrubbery").c_str(), std::fstream::out);

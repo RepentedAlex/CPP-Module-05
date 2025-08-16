@@ -44,6 +44,15 @@ int	main()
 	{
 		std::cout << ppf << std::endl;
 
+		PRINT_TEST("Trying to execute not signed Presidential Pardon Form: ");
+		try {
+			ppf.execute(ppf_gs_low);
+		} catch (const AForm::FormNotSignedException& e) {
+			std::cout << ppf_gs_low << e.what() << std::endl;
+		}
+
+		std::cout << std::endl;
+
 		PRINT_TEST("Grade too low to sign Presidential Pardon Form: ");
 		try {
 			ppf_gs_low.signForm(ppf);
@@ -85,12 +94,22 @@ int	main()
 	{
 		std::cout << rrf << std::endl;
 
+		PRINT_TEST("Trying to execute not signed Robotomy Request Form: ");
+		try {
+			rrf.execute(rrf_gs_low);
+		} catch (const AForm::FormNotSignedException& e) {
+			std::cout << rrf_gs_low << e.what() << std::endl;
+		}
+
+		std::cout << std::endl;
+
 		PRINT_TEST("Grade too low to sign Robotomy Request Form: ");
 		try {
 			rrf_gs_low.signForm(rrf);
 		} catch (const AForm::GradeTooLowException& e) {
 			std::cout << rrf_gs_low << e.what() << std::endl;
 		}
+
 		std::cout << std::endl;
 
 		PRINT_TEST("Can sign Robotomy Request Form: ");
@@ -124,6 +143,15 @@ int	main()
 	PRINT_SUBSECTION("Testing Shrubbery Creation Form");
 	{
 		std::cout << scf << std::endl;
+
+		PRINT_TEST("Trying to execute not signed Shrubbery Creation Form: ");
+		try {
+			scf.execute(scf_gs_low);
+		} catch (const AForm::FormNotSignedException& e) {
+			std::cout << scf_gs_low << e.what() << std::endl;
+		}
+
+		std::cout << std::endl;
 
 		PRINT_TEST("Grade too low to sign Shrubbery Creation Form: ");
 		try {

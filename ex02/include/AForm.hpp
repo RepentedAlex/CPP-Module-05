@@ -72,6 +72,15 @@ public:
 		const char*	what() const throw();
 	};
 
+	/// @class FormNotSignedException
+	/// @brief
+	class	FormNotSignedException : public std::exception {
+	public:
+		/// @brief Returns a descriptive message of the exception.
+		/// @return A pointer to a null-terminated string describing the exception.
+		const char*	what() const throw();
+	};
+
 private:
 	const std::string	name_;			///< Constant name of the Form.
 	bool				isSigned_;		///< Indicates if the Form is signed.
