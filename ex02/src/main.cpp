@@ -48,7 +48,7 @@ int	main()
 		try {
 			ppf.execute(ppf_gs_low);
 		} catch (const AForm::FormNotSignedException& e) {
-			std::cout << ppf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << ppf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -57,7 +57,7 @@ int	main()
 		try {
 			ppf_gs_low.signForm(ppf);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << ppf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << ppf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -66,7 +66,7 @@ int	main()
 		try {
 			chief.signForm(ppf);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << chief << e.what() << std::endl;
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -75,7 +75,7 @@ int	main()
 		try {
 			ppf.execute(ppf_gs_low);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << ppf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << ppf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -84,7 +84,7 @@ int	main()
 		try {
 			ppf.execute(chief);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << chief << e.what() << std::endl;
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
 		}
 	}
 
@@ -98,7 +98,7 @@ int	main()
 		try {
 			rrf.execute(rrf_gs_low);
 		} catch (const AForm::FormNotSignedException& e) {
-			std::cout << rrf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << rrf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -107,7 +107,7 @@ int	main()
 		try {
 			rrf_gs_low.signForm(rrf);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << rrf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << rrf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -116,7 +116,7 @@ int	main()
 		try {
 			chief.signForm(rrf);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << chief << e.what() << std::endl;
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -125,7 +125,7 @@ int	main()
 		try {
 			rrf.execute(rrf_gs_low);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << rrf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << rrf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -134,7 +134,16 @@ int	main()
 		try {
 			rrf.execute(chief);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << chief << e.what() << std::endl;
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
+		}
+
+		std::cout << std::endl;
+
+		PRINT_TEST("Can execute Robotomy Request Form (second time should fail): ");
+		try {
+			rrf.execute(chief);
+		} catch (const AForm::GradeTooLowException& e) {
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
 		}
 	}
 
@@ -148,7 +157,7 @@ int	main()
 		try {
 			scf.execute(scf_gs_low);
 		} catch (const AForm::FormNotSignedException& e) {
-			std::cout << scf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << scf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -157,7 +166,7 @@ int	main()
 		try {
 			scf_gs_low.signForm(scf);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << scf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << scf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -166,7 +175,7 @@ int	main()
 		try {
 			chief.signForm(scf);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << chief << e.what() << std::endl;
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
 		}
 		std::cout << std::endl;
 
@@ -174,7 +183,7 @@ int	main()
 		try {
 			scf.execute(scf_gs_low);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << scf_gs_low << e.what() << std::endl;
+			std::cout << "Caught exception: " << scf_gs_low << e.what() << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -183,7 +192,7 @@ int	main()
 		try {
 			scf.execute(chief);
 		} catch (const AForm::GradeTooLowException& e) {
-			std::cout << chief << e.what() << std::endl;
+			std::cout << "Caught exception: " << chief << e.what() << std::endl;
 		}
 	}
 	return (0);
