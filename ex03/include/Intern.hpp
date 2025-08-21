@@ -11,8 +11,14 @@ class	AForm;
 /// @class Intern
 class	Intern {
 public:
+	/// @brief
 	Intern();
+
+	/// @brief
+	/// @param original
 	Intern(const Intern& original);
+
+	/// @brief
 	~Intern();
 
 	/// @brief

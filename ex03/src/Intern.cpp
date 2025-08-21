@@ -1,4 +1,8 @@
-#include "../include/Intern.hpp"
+#include "Intern.hpp"
+
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 #include <iostream>
 
@@ -27,4 +31,5 @@ AForm*	Intern::makeForm(const std::string name, const std::string target) {
 	default:
 		break;
 	}
+	return (ret);
 }
