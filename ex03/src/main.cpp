@@ -57,8 +57,22 @@ int	main()
 			PRINT_TEST("Trying to make form that doesn't exist");
 			{
 				unknown_form = titouan.makeForm("cerfa 2b", "M. Dubois");
-				std::cout << unknown_form << std::endl;
+				if (unknown_form != NULL) {
+					std::cout << unknown_form << std::endl;
+				}
 			}
+		}
+		if (pres_pardon != NULL) {
+			delete pres_pardon;
+		}
+		if (robo_reques != NULL) {
+			delete robo_reques;
+		}
+		if (shru_creati != NULL) {
+			delete shru_creati;
+		}
+		if (unknown_form != NULL) {
+			delete unknown_form;
 		}
 	}
 	return (0);
